@@ -24,9 +24,9 @@ public class SignInServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse response) throws IOException {
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
         response.setContentType("text/html;charset=utf-8");
         if (Objects.isNull(login) || login.isEmpty() || Objects.isNull(password) || password.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
