@@ -16,17 +16,13 @@ public class PageGenerator {
     private static PageGenerator pageGenerator;
     private final Configuration cfg;
 
-    private PageGenerator() {
-        cfg = new Configuration();
-    }
-
     public static PageGenerator instance() {
         if (pageGenerator == null)
             pageGenerator = new PageGenerator();
         return pageGenerator;
     }
 
-    public String getPage(String filename, Map<String, Object> data) {
+    public String getPage(String filename, Map<String, String> data) {
         Writer stream = new StringWriter();
         try {
             Template template = cfg.getTemplate(HTML_DIR + File.separator + filename);
@@ -35,5 +31,9 @@ public class PageGenerator {
             e.printStackTrace();
         }
         return stream.toString();
+    }
+
+    private PageGenerator() {
+        cfg = new Configuration();
     }
 }
